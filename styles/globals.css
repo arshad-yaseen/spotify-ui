@@ -33,6 +33,7 @@ body {
 }
 .bg-hover{
   background-color: var(--green-secondary);
+  color: red;
 }
 .bg-dark{
   background-color: var(--black);
@@ -85,9 +86,7 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
-#home_header{
-  transition: 0.2s ease;
-}
+
 .seek_bar:hover .seek_bar_dot{
   opacity: 1;
 }
@@ -98,11 +97,15 @@ body {
   background-color: #1AB955;
 }
 .sound_bar:hover .sound_bar_dot{
-  opacity: 1;
+  opacity: 1 !important;
 }
 .sound:hover .sound_bar_dot{
-  opacity: 1;
+  opacity: 1 !important;
 }
 .sound:hover .sound_bar{
-  background-color: #1AB955;
+  background-color: #1AB955 !important;
+}
+.genre-image{
+  --tw-rotate: 20deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }

@@ -1,16 +1,15 @@
 import Head from "next/head";
-import SpotifyGreenIcon from "../images/icons/Spotify_Icon_RGB_Green.png";
+import React from "react";
 import HomeSection from "./components/HomeSection";
 import PlayerSection from "./components/PlayerSection";
 import SideNav from "./components/SideNav";
+import SpotifyGreenIcon from "../images/icons/Spotify_Icon_RGB_Green.png";
 
-export default function Home() {
- 
-
+function search() {
   return (
-    <div className="flex w-full h-screen overflow-scroll">
+    <div className="flex w-full h-screen overflow-scroll" >
       <Head>
-        <title>Spotify - Web Player</title>
+        <title>Spotify - Search</title>
         <link rel="icon" href={SpotifyGreenIcon.src} />
       </Head>
 
@@ -20,3 +19,5 @@ export default function Home() {
     </div>
   );
 }
+
+export default search;

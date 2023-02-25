@@ -40,8 +40,9 @@ function Section({ section_name, rounded = false, play_button = true }) {
 
   return (
     <div className="w-full h-[22rem] flex flex-col mt-4 px-8">
-      <header className="w-full mt-3">
+      <header className="w-full mt-3 flex relative">
         <h1 className="text-2xl text-white">{section_name}</h1>
+        <h1 className=" text-sm hover:underline absolute right-6 cursor-pointer text-white opacity-70">Show all</h1>
       </header>
       <div className="s-full h-full py-4 flex ">
         {Data.map((data) => {

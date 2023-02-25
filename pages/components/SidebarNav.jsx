@@ -10,9 +10,14 @@ import HeartIcon from "../../images/commonicons/hearticon.svg";
 import SaveIconGreen from "../../images/commonicons/saveicongreen.svg";
 import DownloadIcon from "../../images/commonicons/downloadicon.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 function SidebarNav() {
   const [activeNav, setActiveNav] = useState("home");
+
+  useEffect(()=> {
+    setActiveNav(window.location.pathname === "/search" ? "search" : "home")
+  })
 
   const handleNavClick = (navName) => {
     setActiveNav(navName);
@@ -22,7 +27,8 @@ function SidebarNav() {
     const isActive = activeNav === navName;
 
     return (
-      <div
+      <Link
+      href={navName === "search" ? "/search" : "/"}
         className={`w-full h-full flex items-center pl-6 font-medium text-sm hover:text-white transition-colors cursor-pointer ${
           isActive ? "text-white" : "text-[#B3B3B3]"
         }`}
@@ -37,7 +43,7 @@ function SidebarNav() {
           priority={true}
         />
         {label}
-      </div>
+      </Link>
       
     );
   };
