@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "spotify-circular-medium";
+}
+
+:root{
+  --green: #1DB954;
+  --green-secondary: #1CDF63;
+  --white: #FFFFFF;
+  --black: #191414;
+}
+.text-primary{
+  color: var(--green);
+}
+.text-dark{
+  color: var(--black);
+}
+.text-hover{
+  color: var(--green-secondary);
+}
+.bg-primary{
+  background-color: var(--green);
+}
+.bg-hover{
+  background-color: var(--green-secondary);
+}
+.bg-dark{
+  background-color: var(--black);
+}
+
+@font-face{
+  src: url("../fonts/CircularStd-Light.otf");
+  font-family: "spotify-circular-light";
+}
+@font-face{
+  src: url("../fonts/CircularStd-Book.otf");
+  font-family: "spotify-circular-book";
+}
+@font-face{
+  src: url("../fonts/CircularStd-Medium.otf");
+  font-family: "spotify-circular-medium";
+}
+@font-face{
+  src: url("../fonts/CircularStd-Bold.otf");
+  font-family: "spotify-circular-bold";
+}
+@font-face{
+  src: url("../fonts/CircularStd-Black.otf");
+  font-family: "spotify-circular-black";
+}
+
+.font-light{
+  font-family: "spotify-circular-light";
+}
+.font-book{
+  font-family: "spotify-circular-book";
+}
+.font-medium{
+  font-family: "spotify-circular-medium";
+}
+.font-bold{
+  font-family: "spotify-circular-bold";
+}
+.font-black{
+  font-family: "spotify-circular-black";
+}
+.home-icon{
+  fill: white;
+}
+
+.secondary-nav-wrapper:hover .secondary-nav{
+  opacity: 1;
+}
+.music-card:hover .card-play-button{
+  opacity: 1;
+  transform: translateY(0);
+}
+#home_header{
+  transition: 0.2s ease;
+}
+.seek_bar:hover .seek_bar_dot{
+  opacity: 1;
+}
+.seek:hover .seek_bar_dot{
+  opacity: 1;
+}
+.seek:hover .seek_bar{
+  background-color: #1AB955;
+}
+.sound_bar:hover .sound_bar_dot{
+  opacity: 1;
+}
+.sound:hover .sound_bar_dot{
+  opacity: 1;
+}
+.sound:hover .sound_bar{
+  background-color: #1AB955;
+}
