@@ -7,7 +7,7 @@ import SpotifyBlackIcon from "../images/icons/Spotify_Icon_RGB_Black.png";
 import Head from "next/head";
 import Link from "next/link";
 
-function signup() {
+function Signup() {
   useEffect(() => {
     document.getElementById("player_section").style.display = "none";
   }, []);
@@ -138,4 +138,4 @@ function signup() {
   );
 }
 
-export default signup;
+export default Signup;
