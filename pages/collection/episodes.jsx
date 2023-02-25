@@ -8,7 +8,7 @@ function Episodes() {
   return (
     <div className="flex w-full h-screen overflow-scroll" >
       <Head>
-        <title>Spotify - Episodes</title>
+        <title>Spotify - Your Episodes</title>
         <link rel="icon" href={SpotifyGreenIcon.src} />
       </Head>
 

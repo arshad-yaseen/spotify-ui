@@ -14,7 +14,7 @@ import Link from "next/link";
 import SoundIconGreen from "../../images/commonicons/soundicongreen.svg"
 
 function SidebarNav() {
-  const [activeNav, setActiveNav] = useState("home");
+  const [activeNav, setActiveNav] = useState("");
 
   useEffect(()=> {
     setActiveNav(window.location.pathname === "/search" ? "search" : window.location.pathname === "/collection/tracks" ? "liked_songs" : window.location.pathname === "/collection/episodes" ? "your_episodes" : "home")
