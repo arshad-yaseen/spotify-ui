@@ -4,6 +4,8 @@ import Section from "./Section";
 import Header from "./Header";
 import { useRouter } from "next/router";
 import SearchSection from "./SearchSection";
+import TracksSection from "./TracksSection";
+import EpisodesSection from "./EpisodesSection";
 
 function HomeSection() {
   let router = useRouter();
@@ -17,6 +19,10 @@ function HomeSection() {
 
       {router.pathname === "/search" ? (
         <SearchSection />
+      ) : router.pathname === "/collection/tracks" ? (
+        <TracksSection />
+      ) : router.pathname === "/collection/episodes" ? (
+        <EpisodesSection />
       ) : (
         <>
           <Hero />

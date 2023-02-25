@@ -37,7 +37,7 @@ function PlayerSection() {
   }, []);
 
   return (
-    <div className="h-24 z-[100] bg-[#181919] border-t border-t-[#292928] flex w-full fixed bottom-0 left-0">
+    <div id="player_section" className="h-24 z-[100] bg-[#181919] border-t border-t-[#292928] flex w-full fixed bottom-0 left-0">
       <div className="hidden">
         <audio
           id="player_audio"

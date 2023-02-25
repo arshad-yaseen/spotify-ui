@@ -11,12 +11,13 @@ import SaveIconGreen from "../../images/commonicons/saveicongreen.svg";
 import DownloadIcon from "../../images/commonicons/downloadicon.svg";
 import Image from "next/image";
 import Link from "next/link";
+import SoundIconGreen from "../../images/commonicons/soundicongreen.svg"
 
 function SidebarNav() {
   const [activeNav, setActiveNav] = useState("home");
 
   useEffect(()=> {
-    setActiveNav(window.location.pathname === "/search" ? "search" : "home")
+    setActiveNav(window.location.pathname === "/search" ? "search" : window.location.pathname === "/collection/tracks" ? "liked_songs" : window.location.pathname === "/collection/episodes" ? "your_episodes" : "home")
   },[])
 
   const handleNavClick = (navName) => {
@@ -43,6 +44,7 @@ function SidebarNav() {
           priority={true}
         />
         {label}
+       
       </Link>
       
     );
@@ -52,10 +54,11 @@ function SidebarNav() {
     const isActive = activeNav === navName;
 
     return (
-      <div
+      <Link
+      href={navName === "liked_songs" ? "/collection/tracks" : navName === "your_episodes" ? "/collection/episodes" : "/"}
         className={`w-full h-full ${
           first ? "mt-7" : "mt-1"
-        } flex items-center pl-6 font-medium text-sm hover:text-white transition-colors cursor-pointer ${
+        } flex items-center pl-6 font-medium relative text-sm hover:text-white transition-colors cursor-pointer ${
           isActive ? "text-white" : "text-[#B3B3B3] secondary-nav-wrapper"
         }`}
         onClick={() => handleNavClick(navName)}
@@ -96,7 +99,20 @@ function SidebarNav() {
           />
         </div>
         {label}
-      </div>
+        {
+          navName !== "create_playlist" ?
+          <Image
+          src={ SoundIconGreen }
+          alt="sound icon green"
+          id={navName+"_soundicon"}
+          priority={true}
+          height={15}
+          className="absolute right-6 opacity-0 transition-opacity"
+        />
+        :""
+        }
+       
+      </Link>
     );
   };
 

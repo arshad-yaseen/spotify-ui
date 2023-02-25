@@ -1,7 +1,7 @@
 import React from 'react'
 import SpotifyBlackLogo from "../images/logos/Spotify_Logo_RGB_Black.png";
 import Image from "next/image";
-import { FaApple, FaSpotify } from "react-icons/fa";
+import { FaSpotify } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import SpotifyBlackIcon from "../images/icons/Spotify_Icon_RGB_Black.png";
 import Head from "next/head";

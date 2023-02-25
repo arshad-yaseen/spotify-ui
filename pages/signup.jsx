@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SpotifyBlackLogo from "../images/logos/Spotify_Logo_RGB_Black.png";
 import Image from "next/image";
-import { FaApple } from "react-icons/fa";
+import { FaSpotify } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import SpotifyBlackIcon from "../images/icons/Spotify_Icon_RGB_Black.png";
 import Head from "next/head";
 import Link from "next/link";
 
 function signup() {
+  useEffect(() => {
+    document.getElementById("player_section").style.display = "none";
+  }, []);
+
   return (
     <div className="w-full h-full sm:px-8 px-3 flex flex-col items-center">
       <Head>
@@ -35,7 +39,7 @@ function signup() {
             className="w-full hover:scale-105 transition-transform mt-2 py-3 bg-dark text-white font-medium flex items-center rounded-full justify-center"
           >
             <span className="flex items-center justify-center mr-3">
-              <FaApple className="text-xl" />
+              <FaSpotify className="text-xl" />
             </span>
             Sign up with Spotify
           </button>
@@ -121,7 +125,10 @@ function signup() {
 
         <div className="w-full font-book pt-4 pb-16  flex justify-center">
           Have an account?{" "}
-          <Link href="/login" className="text-primary hover:text-green-400 ml-1.5 underline font-book cursor-pointer transition-colors">
+          <Link
+            href="/login"
+            className="text-primary hover:text-green-400 ml-1.5 underline font-book cursor-pointer transition-colors"
+          >
             Log in
           </Link>
           .
