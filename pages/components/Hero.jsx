@@ -62,7 +62,7 @@ function Hero() {
 
   useEffect(() => {
     getImageAverageColor(heroMusicData[0].thumbnail.src, setAverageColor);
-  }, []);
+  }, [heroMusicData]);
 
   return (
     <div id="hero" className={`h-[350px] w-full  relative mb-8`}>

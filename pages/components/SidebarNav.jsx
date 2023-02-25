@@ -17,7 +17,7 @@ function SidebarNav() {
 
   useEffect(()=> {
     setActiveNav(window.location.pathname === "/search" ? "search" : "home")
-  })
+  },[])
 
   const handleNavClick = (navName) => {
     setActiveNav(navName);

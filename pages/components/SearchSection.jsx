@@ -4,10 +4,9 @@ import { changeHeaderBackgroundColor } from "../../lib/tools";
 import DummyMusicThumb2 from "../../images/commonimages/dummymusicthumb2.jpeg";
 
 function SearchSection() {
-
-    useEffect(() => {
-        changeHeaderBackgroundColor("#000",20);
-      }, []);
+  useEffect(() => {
+    changeHeaderBackgroundColor("#000", 20);
+  }, []);
 
   let colors = [
     "red",
@@ -40,17 +39,20 @@ function SearchSection() {
       </div>
       <div className="w-full flex flex-wrap h-full ">
         {genreData.map((data, index) => {
-         useEffect(()=> {
-              document.getElementById(`genre_wrapper_${index}`).style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-         })
+          let newColors = [...colors, ...colors, ...colors, ...colors];
           return (
             <div
-            key={index + 16}
-              id={`genre_wrapper_${index}`}
+              key={index + 16}
+              style={{ backgroundColor: newColors[index] }}
               className={`w-[17.6%] h-52 relative overflow-hidden  rounded-lg mt-6 mr-6 pl-4`}
             >
-                <h1 className="text-2xl mt-4 font-bold text-white" >Podcasts</h1>
-                <Image src={DummyMusicThumb2} alt="dummy music thumb" priority={true} className="h-24 genre-image absolute w-fit right-[-10%] bottom-[-2%] " />
+              <h1 className="text-2xl mt-4 font-bold text-white">Podcasts</h1>
+              <Image
+                src={DummyMusicThumb2}
+                alt="dummy music thumb"
+                priority={true}
+                className="h-24 genre-image absolute w-fit right-[-10%] bottom-[-2%] "
+              />
             </div>
           );
         })}
