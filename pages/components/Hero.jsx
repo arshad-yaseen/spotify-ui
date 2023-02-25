@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import LeftArrow from "../../images/commonicons/leftarrow.svg";
-import RightArrow from "../../images/commonicons/rightarrow.svg";
-import DummyProfile from "../../images/commonimages/dummyprofile.jpeg";
 import DummyMusicThumb1 from "../../images/commonimages/dummymusicthumb1.jpeg";
 import DummyMusicThumb2 from "../../images/commonimages/dummymusicthumb2.jpeg";
 import DummyMusicThumb3 from "../../images/commonimages/dummymusicthumb3.jpeg";
@@ -17,11 +14,9 @@ import {
   greetingMessageShow,
   playPauseAction,
 } from "../../lib/tools";
-import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
-import { TriangleDownIcon } from "@chakra-ui/icons";
 
 function Hero() {
-  const heroMusicData = [
+  let heroMusicData = [
     {
       thumbnail: DummyMusicThumb1,
       name: "Jamalul wujud",
@@ -62,7 +57,7 @@ function Hero() {
 
   useEffect(() => {
     getImageAverageColor(heroMusicData[0].thumbnail.src, setAverageColor);
-  }, [heroMusicData]);
+  }, []);
 
   return (
     <div id="hero" className={`h-[350px] w-full  relative mb-8`}>
