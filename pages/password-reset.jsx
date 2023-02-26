@@ -4,7 +4,7 @@ import Image from "next/image";
 import SpotifyBlackIcon from "../images/icons/Spotify_Icon_RGB_Black.png";
 import Head from "next/head";
 
-function passwordreset() {
+function Passwordreset() {
 
   useEffect(() => {
     document.getElementById("player_section").style.display = "none";
@@ -73,4 +73,4 @@ function passwordreset() {
   );
 }
 
-export default passwordreset;
+export default Passwordreset;

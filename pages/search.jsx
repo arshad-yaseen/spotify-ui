@@ -4,7 +4,7 @@ import HomeSection from "./components/HomeSection";
 import SideNav from "./components/SideNav";
 import SpotifyGreenIcon from "../images/icons/Spotify_Icon_RGB_Green.png";
 
-function search() {
+function Search() {
   return (
     <div className="flex w-full h-screen overflow-scroll" >
       <Head>
@@ -19,4 +19,4 @@ function search() {
   );
 }
 
-export default search;
+export default Search;

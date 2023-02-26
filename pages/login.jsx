@@ -7,7 +7,7 @@ import SpotifyBlackIcon from "../images/icons/Spotify_Icon_RGB_Black.png";
 import Head from "next/head";
 import Link from "next/link"
 
-function login() {
+function Login() {
 
   useEffect(() => {
     document.getElementById("player_section").style.display = "none";
@@ -134,4 +134,4 @@ function login() {
   )
 }
 
-export default login
+export default Login
