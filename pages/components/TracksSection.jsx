@@ -18,7 +18,7 @@ function TracksSection() {
   }, []);
 
   let [tracks, setTracks] = useState([
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
   ]);
 
   const isProduction = process.env.NODE_ENV !== "development";
