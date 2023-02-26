@@ -15,7 +15,7 @@ function HomeSection() {
       id="home_section"
       className="bg-[#121313] w-[83%] pb-56 h-screen overflow-scroll flex flex-col items-center "
     >
-      <Header />
+     
 
 
       {router.pathname === "/search" ? (

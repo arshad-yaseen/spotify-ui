@@ -18,6 +18,10 @@ import {
 function Hero() {
   let heroMusicData = [
     {
+      thumbnail: DummyMusicThumb5,
+      name: "Tahayya",
+    },
+    {
       thumbnail: DummyMusicThumb1,
       name: "Jamalul wujud",
     },
@@ -33,10 +37,7 @@ function Hero() {
       thumbnail: DummyMusicThumb4,
       name: "Ullinullil manju",
     },
-    {
-      thumbnail: DummyMusicThumb5,
-      name: "Tahayya",
-    },
+    
     {
       thumbnail: DummyMusicThumb6,
       name: "Motivational speech",

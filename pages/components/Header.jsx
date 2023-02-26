@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LeftArrow from "../../images/commonicons/leftarrow.svg";
 import RightArrow from "../../images/commonicons/rightarrow.svg";
 import DummyProfile from "../../images/commonimages/dummyprofile.jpeg";
@@ -9,10 +9,15 @@ import SearchIconBlack from "../../images/commonicons/searchiconblack.svg";
 import { useRouter } from "next/router";
 import PlayIcon from "../../images/commonicons/playicon.svg";
 import PauseIcon from "../../images/commonicons/pauseicon.svg";
-import { playPauseAction } from "../../lib/tools";
+import { playPauseAction, routeForwardAndBackAction } from "../../lib/tools";
+
 
 function Header() {
   let router = useRouter();
+
+  useEffect(() => {
+    routeForwardAndBackAction(router)
+  }, [])
 
   const isProduction = process.env.NODE_ENV !== "development";
 
@@ -22,12 +27,12 @@ function Header() {
       className="w-[83%] transition-all z-[100] duration-100   h-16 fixed  right-0 top-0 px-8   flex items-center"
     >
       <div className="h-full z-50 w-20  flex justify-between items-center">
-        <div className="h-8 w-8 cursor-pointer bg-black/50 rounded-full flex items-center justify-center">
+        <button id="history_back_button" onClick={()=> router.back()}  className="h-8 w-8 opacity-50 cursor-not-allowed  bg-black rounded-full flex items-center justify-center">
           <Image src={LeftArrow} alt="left arrow" priority={true} />
-        </div>
-        <div className="h-8 w-8 cursor-pointer bg-black/50 rounded-full flex items-center justify-center">
+        </button>
+        <button  className="h-8 w-8 cursor-not-allowed bg-black opacity-50 rounded-full flex items-center justify-center">
           <Image src={RightArrow} alt="right arrow" priority={true} />
-        </div>
+        </button>
       </div>
 
       <div id="common_div" className="h-full px-4 flex items-center">

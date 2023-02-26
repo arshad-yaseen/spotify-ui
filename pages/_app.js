@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import PlayerSection from "./components/PlayerSection";
+import Header from "./components/Header";
 
 export function reportWebVitals(metric) {
   switch (metric.name) {
@@ -33,6 +34,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <ChakraProvider>
         <Component {...pageProps} />
+        <Header />
         <PlayerSection />
       </ChakraProvider>
       <Analytics />

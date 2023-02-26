@@ -41,7 +41,7 @@ function PlayerSection() {
       <div className="hidden">
         <audio
           id="player_audio"
-          src="https://paglasongs.com/files/download/id/12070"
+          src="https://naathamd.com/wp-content/uploads/dlm_uploads/2020/05/The-Beauty-of-Existence.mp3?_=1"
         ></audio>
       </div>
 
