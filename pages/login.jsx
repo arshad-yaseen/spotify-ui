@@ -8,6 +8,11 @@ import Head from "next/head";
 import Link from "next/link"
 
 function login() {
+
+  useEffect(() => {
+    document.getElementById("player_section").style.display = "none";
+  }, []);
+
   return (
     <div className="w-full h-full sm:px-8 px-3 flex flex-col items-center">
       <Head>

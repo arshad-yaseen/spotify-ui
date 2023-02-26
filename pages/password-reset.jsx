@@ -5,6 +5,11 @@ import SpotifyBlackIcon from "../images/icons/Spotify_Icon_RGB_Black.png";
 import Head from "next/head";
 
 function passwordreset() {
+
+  useEffect(() => {
+    document.getElementById("player_section").style.display = "none";
+  }, []);
+
   return (
     <div className="w-full h-full sm:px-8 px-3 flex flex-col items-center">
       <Head>

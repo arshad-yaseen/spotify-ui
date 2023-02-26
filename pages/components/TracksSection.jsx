@@ -128,6 +128,7 @@ function TracksSection() {
           {tracks.map((item, index) => {
             return (
               <div
+              key={index * 1666}
                 id={`songs_wrapper_${index}`}
                 onMouseEnter={() => {
                   document
