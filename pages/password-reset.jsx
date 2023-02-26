@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SpotifyBlackLogo from "../images/logos/Spotify_Logo_RGB_Black.png";
 import Image from "next/image";
 import SpotifyBlackIcon from "../images/icons/Spotify_Icon_RGB_Black.png";
