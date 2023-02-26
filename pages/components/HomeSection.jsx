@@ -13,9 +13,10 @@ function HomeSection() {
   return (
     <div
       id="home_section"
-      className="bg-[#121313] w-[83%] h-screen overflow-scroll flex flex-col items-center "
+      className="bg-[#121313] w-[83%] pb-56 h-screen overflow-scroll flex flex-col items-center "
     >
       <Header />
+
 
       {router.pathname === "/search" ? (
         <SearchSection />
@@ -24,7 +25,7 @@ function HomeSection() {
       ) : router.pathname === "/collection/episodes" ? (
         <EpisodesSection />
       ) : (
-        <>
+        < >
           <Hero />
           <Section section_name="Episodes for you" />
           <Section
@@ -35,7 +36,7 @@ function HomeSection() {
         </>
       )}
 
-      <div className="w-full pt-48 mt-32 border-t border-t-[#2B2A2B]" />
+
     </div>
   );
 }

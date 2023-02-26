@@ -60,7 +60,7 @@ function Section({ section_name, rounded = false, play_button = true }) {
                     <button className="h-12 shadow-lg shadow-black/50 flex items-center translate-y-[10px] opacity-0 transition-all duration-300 card-play-button justify-center w-12 bg-[#1DDF62] rounded-full absolute right-4 bottom-4">
                     <Image
                       src={PlayIcon}
-                      onClick={(e)=> playPauseAction(e,PlayIcon,PauseIcon)}
+                      onClick={(e)=> playPauseAction(e.target,PlayIcon,PauseIcon)}
                       height={19}
                       width={19}
                       alt="play icon black"

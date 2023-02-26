@@ -41,7 +41,7 @@ function PlayerSection() {
       <div className="hidden">
         <audio
           id="player_audio"
-          src="https://naathamd.com/wp-content/uploads/dlm_uploads/2020/05/The-Beauty-of-Existence.mp3?_=1"
+          src="https://paglasongs.com/files/download/id/12070"
         ></audio>
       </div>
 
@@ -53,15 +53,15 @@ function PlayerSection() {
           className="h-full w-fit"
         />
         <div className="w-full h-full flex flex-col justify-center ml-4">
-          <h1 className="text-sm font-light text-white hover:underline cursor-pointer">
+          <h1 className="text-sm font-book text-white hover:underline cursor-pointer">
             The Beauty of Existence
           </h1>
           <h1 className="text-xs text-[#B2B3B2] mt-1">
-            <span className="hover:text-white hover:underline cursor-pointer font-light">
+            <span className="hover:text-white hover:underline cursor-pointer font-book">
               Muhammed Al Muqit
             </span>
             ,
-            <span className="hover:text-white hover:underline cursor-pointer font-light ml-1">
+            <span className="hover:text-white hover:underline cursor-pointer font-book ml-1">
               Hamoud Al Qahtani
             </span>
           </h1>
@@ -117,7 +117,7 @@ function PlayerSection() {
             <Image
               id="player_section_playicon"
               src={PlayIcon}
-              onClick={(e) => playPauseAction(e, PlayIcon, PauseIcon)}
+              onClick={(e) => playPauseAction(e.target, PlayIcon, PauseIcon)}
               alt="pause icon green"
               priority={true}
             />

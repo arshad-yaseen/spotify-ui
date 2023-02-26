@@ -36,7 +36,9 @@ function SidebarNav() {
         onClick={() => handleNavClick(navName)}
       >
         <Image
-          className="mr-4"
+          className={`mr-4 ${
+            isActive ? "opacity-100" : "opacity-70"
+          } `}
           src={isActive ? activeIconSrc : iconSrc}
           alt={`${label} Icon`}
           height={25}

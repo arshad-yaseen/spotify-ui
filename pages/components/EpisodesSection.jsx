@@ -56,7 +56,7 @@ function EpisodesSection() {
             <Image
               src={PlayIcon}
               onClick={(e) => {
-                playPauseAction(e, PlayIcon, PauseIcon);
+                playPauseAction(e.target, PlayIcon, PauseIcon);
                 if (
                   e.target.src.replace(
                     isProduction

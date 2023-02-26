@@ -98,7 +98,7 @@ function Hero() {
                 <button className="h-12 shadow-lg shadow-black/50 flex items-center opacity-0  transition-opacity card-play-button justify-center w-12 bg-[#1DDF62] rounded-full absolute right-4">
                   <Image
                     src={PlayIcon}
-                    onClick={(e) => playPauseAction(e, PlayIcon, PauseIcon)}
+                    onClick={(e) => playPauseAction(e.target, PlayIcon, PauseIcon)}
                     height={19}
                     width={19}
                     alt="play pause icon black"
