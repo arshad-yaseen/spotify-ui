@@ -1,41 +1,51 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import HeartIcon from "../../images/commonicons/hearticon.svg";
-import HeartIconGreen from "../../images/commonicons/hearticongreen.svg";
 import DummyProfile from "../../images/commonimages/dummyprofile.jpeg";
-import { changeHeaderBackgroundColor, playPauseAction } from "../../lib/tools";
+import { changeHeaderBackgroundColor, getImageAverageColor, playPauseAction } from "../../lib/tools";
 import PlayIcon from "../../images/commonicons/playicon.svg";
 import PauseIcon from "../../images/commonicons/pauseicon.svg";
+import DummyMusicThumb1 from "../../images/commonimages/dummymusicthumb4.jpeg";
+import { TbClock } from "react-icons/tb";
+import { useRouter } from "next/router";
 import PlayIconWhite from "../../images/commonicons/playiconwhite.svg";
 import PauseIconWhite from "../../images/commonicons/pauseiconwhite.svg";
-import { TbClock } from "react-icons/tb";
-import DummyMusicThumb1 from "../../images/commonimages/dummymusicthumb1.jpeg";
+import HeartIconGreen from "../../images/commonicons/hearticongreen.svg";
 import HeartOutlineIcon from "../../images/commonicons/heartoutlineicon.svg";
 
-function TracksSection() {
+function PlaylistSection() {
+
+    let [averageColor, setAverageColor] = useState("");
+
   useEffect(() => {
-    changeHeaderBackgroundColor("#190E3C");
+    getImageAverageColor(DummyMusicThumb1.src, setAverageColor)
   }, []);
 
-  let [tracks, setTracks] = useState([1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]);
+  useEffect(() => {
+    changeHeaderBackgroundColor(averageColor);
+  }, [averageColor]);
+
+  let [playlists, setEpisodes] = useState([1, 1, 1]);
 
   const isProduction = process.env.NODE_ENV !== "development";
+
+  let router = useRouter()
+  let playlistId = router.query.id
+
+
 
   return (
     <div className="w-full  relative ">
       <div className="w-full h-[340px]   z-50 absolute top-0 flex items-center pl-10">
-        <div className="w-[230px] shadow-lg shadow-black/20 h-[230px] mt-16 bg-gradient-to-br from-[#4C1BF3] to-white flex items-center justify-center">
-          <Image
-            src={HeartIcon}
-            alt={`Heart Icon`}
-            height={80}
-            width={80}
+      <Image
+            src={DummyMusicThumb1}
+            alt={`Dummy Music Thumb 1`}
+            height={230}
             priority={true}
+            className="mt-16 shadow-lg shadow-black/20"
           />
-        </div>
         <div className="w-auto h-[230px] mt-16 ml-6 flex flex-col justify-end">
           <h1 className="text-white uppercase text-xs font-bold">playlist</h1>
-          <h1 className="text-white text-[5.5rem] font-black">Liked Songs</h1>
+          <h1 className="text-white text-[4.5rem] font-black">Jamalul wujud</h1>
           <div className="flex items-center">
             <Image
               src={DummyProfile}
@@ -50,15 +60,19 @@ function TracksSection() {
             </h1>
             <span className="mx-2 text-white text-2xl">·</span>
             <h1 className=" text-white  font-book text-sm cursor-default">
-              6 songs
+              4 songs
+            </h1>
+            <span className="mx-2 text-white text-2xl">·</span>
+            <h1 className=" text-white  font-book text-sm cursor-default">
+                1 hr 20 mins
             </h1>
           </div>
         </div>
       </div>
 
-      <div className="w-[120%] z-10 relative -ml-[20%] h-[650px] bg-gradient-to-br -mt-[10%] from-[#5629F3]/90 via-[#5629F3]/50 to-black blur-2xl"></div>
+      <div id="playlist_gradient" className="w-[120%]  transition-colors duration-700 z-10 relative -ml-[20%] h-[750px] -mt-[10%] blur-2xl"></div>
 
-      <div className="w-full h-[400px]  z-50 pr-16 relative bg-gradient-to-b -mt-[16%] from-black/20 via-[#121313] to-[#121313] pl-10">
+      <div className="w-full h-[400px]  z-50 pr-16 relative bg-gradient-to-b -mt-[24%] from-black/20 via-[#121313] to-[#121313] pl-10">
         <div className="h-28 w-full  flex justify-start items-center">
           <div className="w-14 h-14 bg-hover hover:scale-105 rounded-full flex items-center justify-center">
             <Image
@@ -75,14 +89,14 @@ function TracksSection() {
                     ""
                   ) !== PlayIcon.src
                 ) {
-                  document
-                    .getElementById("liked_songs_soundicon")
-                    .classList.replace("opacity-0", "opacity-100");
-                } else {
-                  document
-                    .getElementById("liked_songs_soundicon")
-                    .classList.replace("opacity-100", "opacity-0");
-                }
+                    document
+                      .getElementById(playlistId+"_soundicon")
+                      .classList.replace("opacity-0", "opacity-100");
+                  } else {
+                    document
+                      .getElementById(playlistId+"_soundicon")
+                      .classList.replace("opacity-100", "opacity-0");
+                  }
               }}
               alt="play icon green"
               priority={true}
@@ -90,6 +104,7 @@ function TracksSection() {
             />
           </div>
         </div>
+
 
         <div className="w-full h-full flex flex-col ">
           <div className="w-full h-[30px]  border-b px-6 border-b-[#2B2A2B] flex items-center">
@@ -118,7 +133,7 @@ function TracksSection() {
             </div>
           </div>
 
-          {tracks.map((item, index) => {
+          {playlists.map((item, index) => {
             return (
               <div
                 key={index * 1666}
@@ -128,12 +143,18 @@ function TracksSection() {
                     .getElementById(`song_playbutton_${index}`)
                     .classList.replace("invisible", "visible");
                   document
+                    .getElementById(`playlist_heart_button_${index}`)
+                    .classList.replace("invisible", "visible");
+                  document
                     .getElementById(`song_index_${index}`)
                     .classList.replace("visible", "invisible");
                 }}
                 onMouseLeave={() => {
                   document
                     .getElementById(`song_playbutton_${index}`)
+                    .classList.replace("visible", "invisible");
+                  document
+                    .getElementById(`playlist_heart_button_${index}`)
                     .classList.replace("visible", "invisible");
 
                   if (
@@ -151,7 +172,7 @@ function TracksSection() {
                       .classList.replace("invisible", "visible");
                   }
                 }}
-                className="w-full h-[70px] px-6  rounded-sm hover:bg-[#2C2B30]/50 relative   flex items-center py-5"
+                className="w-full h-[70px] px-6  rounded-sm hover:bg-[#2C2B30]/70 relative   flex items-center py-5"
               >
                 <div className="w-[45%] h-full flex items-center">
                   <span
@@ -166,12 +187,12 @@ function TracksSection() {
                     className="absolute invisible"
                     id={`song_playbutton_${index}`}
                     onClick={(e) => {
-                      for (let i = 0; i < tracks.length; i++) {
+                      for (let i = 0; i < playlists.length; i++) {
                         document.getElementById(`song_playbutton_${i}`).src =
                           PlayIconWhite.src;
                         document
                           .getElementById(`songs_wrapper_${i}`)
-                          .classList.remove("bg-[#2C2B30]/50");
+                          .classList.remove("bg-[#2C2B30]/70");
                       }
 
                       playPauseAction(
@@ -182,7 +203,7 @@ function TracksSection() {
                         PauseIcon
                       );
 
-                      for (let i = 0; i < tracks.length; i++) {
+                      for (let i = 0; i < playlists.length; i++) {
                         document
                           .getElementById(`song_title_${i}`)
                           .classList.replace("text-hover", "text-white");
@@ -205,14 +226,14 @@ function TracksSection() {
                           .classList.remove("visible");
                         document
                           .getElementById(`songs_wrapper_${index}`)
-                          .classList.add("bg-[#2C2B30]/50");
+                          .classList.add("bg-[#2C2B30]/70");
                       } else {
                         document
                           .getElementById(`song_playbutton_${index}`)
                           .classList.add("visible");
                         document
                           .getElementById(`songs_wrapper_${index}`)
-                          .classList.remove("bg-[#2C2B30]/50");
+                          .classList.remove("bg-[#2C2B30]/70");
                       }
 
                       if (
@@ -224,11 +245,11 @@ function TracksSection() {
                         ) !== PlayIconWhite.src
                       ) {
                         document
-                          .getElementById("liked_songs_soundicon")
+                          .getElementById(`${playlistId}_soundicon`)
                           .classList.replace("opacity-0", "opacity-100");
                       } else {
                         document
-                          .getElementById("liked_songs_soundicon")
+                          .getElementById(`${playlistId}_soundicon`)
                           .classList.replace("opacity-100", "opacity-0");
                       }
                     }}
@@ -272,7 +293,7 @@ function TracksSection() {
                 </div>
                 <div className="w-[10%] h-full flex items-center justify-end">
                   <Image
-                    src={HeartIconGreen}
+                    src={HeartOutlineIcon}
                     onClick={(e) => {
                       if (
                         e.target.src.replace(
@@ -280,18 +301,19 @@ function TracksSection() {
                             ? process.env.NEXT_PUBLIC_BASE_PROD_URL
                             : process.env.NEXT_PUBLIC_BASE_DEV_URL,
                           ""
-                        ) === HeartIconGreen.src
+                        ) !== HeartIconGreen.src
                       ) {
-                        e.target.src = HeartOutlineIcon.src;
-                      } else {
                         e.target.src = HeartIconGreen.src;
+                      } else {
+                        e.target.src = HeartOutlineIcon.src;
                       }
                     }}
                     alt={`Heart Icon`}
                     height={15}
                     width={15}
+                    id={`playlist_heart_button_${index}`}
                     priority={true}
-                    className="mr-8 cursor-pointer"
+                    className="mr-8 cursor-pointer invisible "
                   />
                   <h1 className="text-white text-sm font-book opacity-70">
                     3:01
@@ -300,10 +322,12 @@ function TracksSection() {
               </div>
             );
           })}
-        </div>
+        </div>  
+
+        
       </div>
     </div>
   );
 }
 
-export default TracksSection;
+export default PlaylistSection;

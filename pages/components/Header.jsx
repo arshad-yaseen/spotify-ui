@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import LeftArrow from "../../images/commonicons/leftarrow.svg";
 import RightArrow from "../../images/commonicons/rightarrow.svg";
 import DummyProfile from "../../images/commonimages/dummyprofile.jpeg";
@@ -9,15 +9,26 @@ import SearchIconBlack from "../../images/commonicons/searchiconblack.svg";
 import { useRouter } from "next/router";
 import PlayIcon from "../../images/commonicons/playicon.svg";
 import PauseIcon from "../../images/commonicons/pauseicon.svg";
-import { playPauseAction, routeForwardAndBackAction } from "../../lib/tools";
-
+import { playPauseAction } from "../../lib/tools";
 
 function Header() {
   let router = useRouter();
+  let {id} = router.query
+  let [pageTitle,setPageTitle] = useState("")
 
   useEffect(() => {
-    routeForwardAndBackAction(router)
-  }, [])
+    if(document.getElementById("header_common_thing_playbutton")){
+      document.getElementById("header_common_thing_playbutton").src =
+      PlayIcon.src;
+    }
+    
+  }, []);
+
+  useEffect(() => {
+    
+    setPageTitle(document.title.split(" - ")[1])
+    
+  }, [router]);
 
   const isProduction = process.env.NODE_ENV !== "development";
 
@@ -27,10 +38,13 @@ function Header() {
       className="w-[83%] transition-all z-[100] duration-100   h-16 fixed  right-0 top-0 px-8   flex items-center"
     >
       <div className="h-full z-50 w-20  flex justify-between items-center">
-        <button id="history_back_button" onClick={()=> router.back()}  className="h-8 w-8 opacity-50 cursor-not-allowed  bg-black rounded-full flex items-center justify-center">
+        <button
+          onClick={() => router.back()}
+          className="h-8 w-8  bg-black rounded-full flex items-center justify-center"
+        >
           <Image src={LeftArrow} alt="left arrow" priority={true} />
         </button>
-        <button  className="h-8 w-8 cursor-not-allowed bg-black opacity-50 rounded-full flex items-center justify-center">
+        <button className="h-8 w-8 cursor-not-allowed bg-black opacity-50 rounded-full flex items-center justify-center">
           <Image src={RightArrow} alt="right arrow" priority={true} />
         </button>
       </div>
@@ -52,41 +66,107 @@ function Header() {
             />
           </div>
         ) : router.pathname === "/collection/tracks" ? (
-          <div className="flex items-center header_common_thing opacity-0 invisible transition-opacity delay-1000 duration-300">
-             
-             <div className="w-12 h-12 bg-hover hover:scale-105 rounded-full flex items-center justify-center">
-             <Image
-              src={PlayIcon}
-              id="header_common_thing_playbutton"
-              onClick={(e) => {
-               
-                playPauseAction(e.target, PlayIcon, PauseIcon);
-                playPauseAction(document.getElementById('collection_playbutton'), PlayIcon, PauseIcon);
-                
+          <div className="flex items-center header_common_thing opacity-0 invisible transition-opacity delay-300 duration-500">
+            <div className="w-12 h-12 bg-hover hover:scale-105 rounded-full flex items-center justify-center">
+              <Image
+                src={PlayIcon}
+                id="header_common_thing_playbutton"
+                onClick={(e) => {
+                  playPauseAction(e.target, PlayIcon, PauseIcon);
 
-                if (
-                  e.target.src.replace(
-                    isProduction
-                      ? process.env.NEXT_PUBLIC_BASE_PROD_URL
-                      : process.env.NEXT_PUBLIC_BASE_DEV_URL,
-                    ""
-                  ) !== PlayIcon.src
-                ) {
-                  document
-                    .getElementById("liked_songs_soundicon")
-                    .classList.replace("opacity-0", "opacity-100");
-                } else {
-                  document
-                    .getElementById("liked_songs_soundicon")
-                    .classList.replace("opacity-100", "opacity-0");
-                }
-              }}
-              alt="play icon green"
-              priority={true}
-              height={20}
-            />
-             </div>
-             <h1 className="text-2xl text-white font-bold ml-4" >Liked Songs</h1>
+                  if (
+                    e.target.src.replace(
+                      isProduction
+                        ? process.env.NEXT_PUBLIC_BASE_PROD_URL
+                        : process.env.NEXT_PUBLIC_BASE_DEV_URL,
+                      ""
+                    ) !== PlayIcon.src
+                  ) {
+                    document
+                      .getElementById("liked_songs_soundicon")
+                      .classList.replace("opacity-0", "opacity-100");
+                  } else {
+                    document
+                      .getElementById("liked_songs_soundicon")
+                      .classList.replace("opacity-100", "opacity-0");
+                  }
+                }}
+                alt="play icon green"
+                priority={true}
+                height={20}
+              />
+            </div>
+            <h1 className="text-2xl text-white font-bold ml-4">{pageTitle}</h1>
+          </div>
+        ) : router.pathname === "/collection/episodes" ? (
+          <div className="flex items-center header_common_thing opacity-0 invisible transition-opacity delay-300 duration-500">
+            <div className="w-12 h-12 bg-hover hover:scale-105 rounded-full flex items-center justify-center">
+              <Image
+                src={PlayIcon}
+                id="header_common_thing_playbutton"
+                onClick={(e) => {
+                  playPauseAction(e.target, PlayIcon, PauseIcon);
+
+                  if (
+                    e.target.src.replace(
+                      isProduction
+                        ? process.env.NEXT_PUBLIC_BASE_PROD_URL
+                        : process.env.NEXT_PUBLIC_BASE_DEV_URL,
+                      ""
+                    ) !== PlayIcon.src
+                  ) {
+                    document
+                      .getElementById("liked_songs_soundicon")
+                      .classList.replace("opacity-0", "opacity-100");
+                  } else {
+                    document
+                      .getElementById("liked_songs_soundicon")
+                      .classList.replace("opacity-100", "opacity-0");
+                  }
+                }}
+                alt="play icon green"
+                priority={true}
+                height={20}
+              />
+            </div>
+            <h1 className="text-2xl text-white font-bold ml-4">
+              {pageTitle}
+            </h1>
+          </div>
+        ) :  router.pathname.includes("/playlist") ? (
+          <div className="flex items-center header_common_thing opacity-0 invisible transition-opacity delay-300 duration-500">
+            <div className="w-12 h-12 bg-hover hover:scale-105 rounded-full flex items-center justify-center">
+              <Image
+                src={PlayIcon}
+                id="header_common_thing_playbutton"
+                onClick={(e) => {
+                  playPauseAction(e.target, PlayIcon, PauseIcon);
+
+                  if (
+                    e.target.src.replace(
+                      isProduction
+                        ? process.env.NEXT_PUBLIC_BASE_PROD_URL
+                        : process.env.NEXT_PUBLIC_BASE_DEV_URL,
+                      ""
+                    ) !== PlayIcon.src
+                  ) {
+                    document
+                      .getElementById(`${id}_soundicon`)
+                      .classList.replace("opacity-0", "opacity-100");
+                  } else {
+                    document
+                      .getElementById(`${id}_soundicon`)
+                      .classList.replace("opacity-100", "opacity-0");
+                  }
+                }}
+                alt="play icon green"
+                priority={true}
+                height={20}
+              />
+            </div>
+            <h1 className="text-2xl text-white font-bold ml-4">
+              {pageTitle}
+            </h1>
           </div>
         ) : (
           ""

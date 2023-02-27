@@ -34,7 +34,6 @@ function MyApp({ Component, pageProps }) {
     <>
       <ChakraProvider>
         <Component {...pageProps} />
-        <Header />
         <PlayerSection />
       </ChakraProvider>
       <Analytics />

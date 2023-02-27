@@ -5,7 +5,7 @@ import DummyMusicThumb2 from "../../images/commonimages/dummymusicthumb2.jpeg";
 
 function SearchSection() {
   useEffect(() => {
-    changeHeaderBackgroundColor("#000", 20);
+    changeHeaderBackgroundColor("#070606", 30);
   }, []);
 
   let colors = [
@@ -44,7 +44,7 @@ function SearchSection() {
             <div
               key={index + 16}
               style={{ backgroundColor: newColors[index] }}
-              className={`w-[17.6%] h-52 relative overflow-hidden  rounded-lg mt-6 mr-6 pl-4`}
+              className={`w-[17.6%] cursor-pointer hover:brightness-90 transition-all h-52 relative overflow-hidden  rounded-lg mt-6 mr-6 pl-4`}
             >
               <h1 className="text-2xl mt-4 font-bold text-white">Podcasts</h1>
               <Image

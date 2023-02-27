@@ -53,12 +53,10 @@ function Hero() {
 
   //   Changing the header background color
   useEffect(() => {
-    changeHeaderBackgroundColor(averageColor);
+    changeHeaderBackgroundColor(averageColor === "" ? "#070606 " : averageColor,30);
   }, [averageColor]);
 
-  useEffect(() => {
-    getImageAverageColor(heroMusicData[0].thumbnail.src, setAverageColor);
-  }, []);
+
 
   return (
     <div id="hero" className={`h-[350px] w-full  relative mb-8`}>
