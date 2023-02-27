@@ -41,7 +41,7 @@ function PlaylistsSidebar() {
           setActiveNav(playlist.name);
         }
       });
-  }, [router]);
+  }, [router,id, playlists]);
 
   const handleNavClick = (navName) => {
     setActiveNav(navName);
@@ -53,10 +53,10 @@ function PlaylistsSidebar() {
         .filter((playlist) => {
           return playlist.id === id ? playlist : "";
         })
-        .map((playlist) => {
+        .map((playlist,index) => {
           if (playlist != "") {
             return (
-              <Head>
+              <Head key={index * 23129263234} >
                 <title>
                   Spotify - {playlist.name}
                 </title>

@@ -90,7 +90,7 @@ function EpisodesSection() {
         <div className="w-full h-full flex flex-col ">
           {episodes.map((episode, index) => {
             return (
-              <div className="w-[85%] min-h-[200px] border-t-2 relative hover:bg-[#2B2928]/50 rounded-md hover:border-transparent border-t-[#202120] flex cursor-pointer">
+              <div key={index * 236273649729634} className="w-[85%] min-h-[200px] border-t-2 relative hover:bg-[#2B2928]/50 rounded-md hover:border-transparent border-t-[#202120] flex cursor-pointer">
                 <div className="w-[180px] h-full p-4">
                   <Image
                     src={DummyMusicThumb1}
