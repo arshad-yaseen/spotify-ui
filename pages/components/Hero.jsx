@@ -14,6 +14,7 @@ import {
   greetingMessageShow,
   playPauseAction,
 } from "../../lib/tools";
+import { useRouter } from "next/router";
 
 function Hero() {
   let heroMusicData = [
@@ -37,7 +38,7 @@ function Hero() {
       thumbnail: DummyMusicThumb4,
       name: "Ullinullil manju",
     },
-    
+
     {
       thumbnail: DummyMusicThumb6,
       name: "Motivational speech",
@@ -53,10 +54,13 @@ function Hero() {
 
   //   Changing the header background color
   useEffect(() => {
-    changeHeaderBackgroundColor(averageColor === "" ? "#070606 " : averageColor,30);
+    changeHeaderBackgroundColor(
+      averageColor === "" ? "#070606 " : averageColor,
+      30
+    );
   }, [averageColor]);
 
-
+  let router = useRouter();
 
   return (
     <div id="hero" className={`h-[350px] w-full  relative mb-8`}>
@@ -64,7 +68,7 @@ function Hero() {
         id="hero_gradient"
         className="w-full brightness-[0.7] transition-colors duration-700  z-10 h-full absolute  blur-3xl -mt-[10%] -ml-[10%]"
       ></div>
-      
+
       <div className="px-8 mt-20">
         <div className="w-full z-50 h-6 mb-4 mt-4 text-white text-3xl flex items-center">
           <h1 id="greeting-elem" className="z-50 font-bold"></h1>
@@ -97,7 +101,17 @@ function Hero() {
                 <button className="h-12 shadow-lg shadow-black/50 flex items-center opacity-0  transition-opacity card-play-button justify-center w-12 bg-[#1DDF62] rounded-full absolute right-4">
                   <Image
                     src={PlayIcon}
-                    onClick={(e) => playPauseAction(e.target, PlayIcon, PauseIcon)}
+                    onClick={(e) => {
+                      localStorage.setItem("current_audio","https://mp3ringtonesdownload.net/wp-content/uploads/2022/11/Ullinullil-Manju-Veezhum-Mandarappoove-Kumari-Malayalam-Song.mp3")
+                      playPauseAction(
+                        e.target,
+                        PlayIcon,
+                        PauseIcon,
+                        undefined,
+                        undefined,
+                        localStorage.getItem("current_audio")
+                      );
+                    }}
                     height={19}
                     width={19}
                     alt="play pause icon black"

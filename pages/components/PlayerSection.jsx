@@ -18,14 +18,14 @@ import Sound75Icon from "../../images/commonicons/sound75icon.svg";
 import Sound25Icon from "../../images/commonicons/sound25icon.svg";
 import MuteIcon from "../../images/commonicons/muteicon.svg";
 import FullScreenIcon from "../../images/commonicons/fullscreenicon.svg";
-import { playPauseAction } from "../../lib/tools";
+import { getCurrentAudio, playPauseAction } from "../../lib/tools";
 import progressAndSoundBarAction from "../../lib/progressAndSoundBarAction";
-
 
 function PlayerSection() {
   let [isLiked, setIsLiked] = useState(false);
   let [isRepeat, setIsRepeat] = useState(false);
   let [isShuffle, setIsShuffle] = useState(false);
+  let [currentAudio, setCurrentAudio] = useState("");
 
   useEffect(() => {
     progressAndSoundBarAction.init(
@@ -37,12 +37,12 @@ function PlayerSection() {
   }, []);
 
   return (
-    <div id="player_section" className="h-24 z-[100] bg-[#181919] border-t border-t-[#292928] flex w-full fixed bottom-0 left-0">
+    <div
+      id="player_section"
+      className="h-24 z-[100] bg-[#181919] border-t border-t-[#292928] flex w-full fixed bottom-0 left-0"
+    >
       <div className="hidden">
-        <audio
-          id="player_audio"
-          src="https://naathamd.com/wp-content/uploads/dlm_uploads/2020/05/The-Beauty-of-Existence.mp3?_=1"
-        ></audio>
+        <audio id="player_audio" src={currentAudio}></audio>
       </div>
 
       <div className="w-[30%] flex h-full px-6 py-4">
@@ -117,7 +117,16 @@ function PlayerSection() {
             <Image
               id="player_section_playicon"
               src={PlayIcon}
-              onClick={(e) => playPauseAction(e.target, PlayIcon, PauseIcon)}
+              onClick={(e) =>
+                playPauseAction(
+                  e.target,
+                  PlayIcon,
+                  PauseIcon,
+                  undefined,
+                  undefined,
+                  localStorage.getItem("current_audio")
+                )
+              }
               alt="pause icon green"
               priority={true}
             />
