@@ -17,7 +17,7 @@ function SidebarNav() {
   const [activeNav, setActiveNav] = useState("");
 
   useEffect(()=> {
-    setActiveNav(window.location.pathname === "/search" ? "search" : window.location.pathname === "/collection/tracks" ? "liked_songs" : window.location.pathname === "/collection/episodes" ? "your_episodes" : window.location.pathname.includes("/playlist") ? "" : "home")
+    setActiveNav(window.location.pathname === "/search" ? "search" : window.location.pathname.includes("/search/") ? "search" : window.location.pathname === "/collection/tracks" ? "liked_songs" : window.location.pathname === "/collection/episodes" ? "your_episodes" : window.location.pathname.includes("/playlist") ? "" : "home")
   },[])
 
   const handleNavClick = (navName) => {

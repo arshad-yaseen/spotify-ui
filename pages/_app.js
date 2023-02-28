@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import PlayerSection from "./components/PlayerSection";
 import Header from "./components/Header";
+import { RecoilRoot } from "recoil";
 
 export function reportWebVitals(metric) {
   switch (metric.name) {
@@ -33,8 +34,11 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <ChakraProvider>
-        <Component {...pageProps} />
-        <PlayerSection />
+        <RecoilRoot>
+          <Component {...pageProps} />
+          <Header />
+          <PlayerSection />
+        </RecoilRoot>
       </ChakraProvider>
       <Analytics />
     </>

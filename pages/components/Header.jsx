@@ -10,18 +10,20 @@ import { useRouter } from "next/router";
 import PlayIcon from "../../images/commonicons/playicon.svg";
 import PauseIcon from "../../images/commonicons/pauseicon.svg";
 import { playPauseAction } from "../../lib/tools";
+import { useRecoilValue } from "recoil";
+import { searchValue } from "../../atoms/searchAtom";
 
 function Header() {
   let router = useRouter();
   let {id} = router.query
   let [pageTitle,setPageTitle] = useState("")
+  let searchQuery = useRecoilValue(searchValue)
 
   useEffect(() => {
     if(document.getElementById("header_common_thing_playbutton")){
       document.getElementById("header_common_thing_playbutton").src =
       PlayIcon.src;
     }
-    
   }, []);
 
   useEffect(() => {
@@ -29,6 +31,8 @@ function Header() {
     setPageTitle(document.title.split(" - ")[1])
     
   }, [router]);
+
+;
 
   const isProduction = process.env.NODE_ENV !== "development";
 
@@ -50,10 +54,12 @@ function Header() {
       </div>
 
       <div id="common_div" className="h-full px-4 flex items-center">
-        {router.pathname === "/search" ? (
+        {router.pathname.includes("/search") ? (
           <div className="relative">
             <input
+            onChange={(e) => {router.push(`/search/${e.target.value}`)}}
               autoFocus
+              defaultValue={searchQuery != "" ? searchQuery : ""}
               type="search"
               placeholder="What do you want to listen to?"
               className="outline-none text-[0.940rem] font-book w-[350px] placeholder:text-[#747574] rounded-full py-2 pl-12"
@@ -192,7 +198,15 @@ function Header() {
             as={Button}
             rightIcon={<TriangleDownIcon />}
           />
-          <MenuList rounded="md" bg="#292928" border="none" color="white">
+          <MenuList rounded="md" bg="#282828" shadow="xl" border="none" color="white">
+            <MenuItem
+              _hover={{ backgroundColor: "#3F3D3C" }}
+              bg="#292928"
+              opacity="0.8"
+              className="font-book text-sm"
+            >
+              Profile
+            </MenuItem>
             <MenuItem
               _hover={{ backgroundColor: "#3F3D3C" }}
               bg="#292928"

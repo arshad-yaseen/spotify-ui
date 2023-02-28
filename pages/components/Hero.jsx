@@ -102,14 +102,14 @@ function Hero() {
                   <Image
                     src={PlayIcon}
                     onClick={(e) => {
-                      localStorage.setItem("current_audio","https://mp3ringtonesdownload.net/wp-content/uploads/2022/11/Ullinullil-Manju-Veezhum-Mandarappoove-Kumari-Malayalam-Song.mp3")
+                      // localStorage.setItem("current_audio","https://mp3ringtonesdownload.net/wp-content/uploads/2022/11/Ullinullil-Manju-Veezhum-Mandarappoove-Kumari-Malayalam-Song.mp3")
                       playPauseAction(
                         e.target,
                         PlayIcon,
                         PauseIcon,
                         undefined,
                         undefined,
-                        localStorage.getItem("current_audio")
+                        // localStorage.getItem("current_audio")
                       );
                     }}
                     height={19}

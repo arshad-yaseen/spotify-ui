@@ -6,10 +6,10 @@ import DummyMusicThumb4 from "../../images/commonimages/dummymusicthumb4.jpeg";
 import DummyMusicThumb5 from "../../images/commonimages/dummymusicthumb5.jpeg";
 import PlayIcon from "../../images/commonicons/playicon.svg";
 import PauseIcon from "../../images/commonicons/pauseicon.svg";
-import Image from "next/image";
 import { playPauseAction } from "../../lib/tools";
+import Image from "next/image";
 
-function Section({ section_name, rounded = false, play_button = true }) {
+function Section({ section_name, rounded = false, play_button = true,hideShowAll=false  }) {
   const Data = [
     {
       thumbnail: DummyMusicThumb2,
@@ -42,7 +42,12 @@ function Section({ section_name, rounded = false, play_button = true }) {
     <div className="w-full h-[22rem] flex flex-col mt-4 px-8">
       <header className="w-full mt-3 flex relative">
         <h1 className="text-2xl text-white">{section_name}</h1>
-        <h1 className=" text-sm hover:underline absolute right-6 cursor-pointer text-white opacity-70">Show all</h1>
+        {
+          hideShowAll === false ?
+          <h1 className=" text-sm hover:underline absolute right-6 cursor-pointer text-white opacity-70">Show all</h1>
+          : ""
+        }
+        
       </header>
       <div className="s-full h-full py-4 flex ">
         {Data.map((data) => {

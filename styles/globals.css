@@ -108,3 +108,14 @@ body {
   --tw-rotate: 20deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+
+
+input[type="search"]::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+input[type="search"] {
+  outline: none; /* Remove the outline */
+  box-shadow: none; /* Remove the box shadow */
+  text-decoration: none; /* Remove the text decoration */
+}
