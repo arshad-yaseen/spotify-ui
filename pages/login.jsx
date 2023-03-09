@@ -10,6 +10,7 @@ import Link from "next/link"
 function Login() {
 
   useEffect(() => {
+    document.getElementById('home_header').style.display = "none";
     document.getElementById("player_section").style.display = "none";
   }, []);
 
