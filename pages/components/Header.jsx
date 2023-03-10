@@ -39,9 +39,9 @@ function Header() {
   return (
     <header
       id="home_header"
-      className="w-[83%] transition-all z-[100] duration-100   h-16 fixed  right-0 top-0 px-8   flex items-center"
+      className="sm:w-[83%] w-full transition-all z-[100] duration-100   h-16 fixed  right-0 top-0 lg:px-8 px-4   flex items-center"
     >
-      <div className="h-full z-50 w-20  flex justify-between items-center">
+      <div className="h-full z-50 w-20 lg:static absolute sm:left-24  flex justify-between items-center">
         <button
           onClick={() => router.back()}
           className="h-8 w-8  bg-black rounded-full flex items-center justify-center"
@@ -188,7 +188,7 @@ function Header() {
           width={25}
           className="rounded-full ml-2"
         />
-        <p className="font-medium text-white mx-4 text-sm">Arshad Yaseen</p>
+        <p className="font-medium text-white mx-4 text-sm lg:block hidden">Arshad Yaseen</p>
         <Menu>
           <MenuButton
             bg="transparent"

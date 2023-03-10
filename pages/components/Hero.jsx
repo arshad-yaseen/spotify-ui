@@ -69,11 +69,11 @@ function Hero() {
         className="w-full brightness-[0.7] transition-colors duration-700  z-10 h-full absolute  blur-3xl -mt-[10%] -ml-[10%]"
       ></div>
 
-      <div className="px-8 mt-20">
+      <div className="lg:px-8 px-4 mt-20">
         <div className="w-full z-50 h-6 mb-4 mt-4 text-white text-3xl flex items-center">
           <h1 id="greeting-elem" className="z-50 font-bold"></h1>
         </div>
-        <div className="w-full z-50 h-[180px] flex flex-wrap ">
+        <div className="w-full z-50 xl:h-[180px] lg:h-[280px] h-[240px] flex flex-wrap lg:overflow-hidden overflow-scroll">
           {heroMusicData.map((data, index) => {
             return (
               <div
@@ -87,7 +87,7 @@ function Hero() {
                     setAverageColor
                   )
                 }
-                className="w-[31.6%] z-50 music-card shadow-lg shadow-black/10 bg-opacity-40 cursor-pointer flex items-center h-[45%] mr-4 my-2 bg-[#313030] hover:bg-[#4a4a47] transition-colors rounded-sm relative"
+                className="xl:w-[31.6%] lg:w-[48%] w-full z-50 music-card shadow-lg shadow-black/10 bg-opacity-40 cursor-pointer flex items-center xl:h-[45%] lg:h-[25%] h-[70px] mr-4 my-2 bg-[#313030] hover:bg-[#4a4a47] transition-colors rounded-sm relative"
               >
                 <Image
                   src={data.thumbnail}
@@ -102,14 +102,12 @@ function Hero() {
                   <Image
                     src={PlayIcon}
                     onClick={(e) => {
-                      // localStorage.setItem("current_audio","https://mp3ringtonesdownload.net/wp-content/uploads/2022/11/Ullinullil-Manju-Veezhum-Mandarappoove-Kumari-Malayalam-Song.mp3")
                       playPauseAction(
                         e.target,
                         PlayIcon,
                         PauseIcon,
                         undefined,
                         undefined,
-                        // localStorage.getItem("current_audio")
                       );
                     }}
                     height={19}

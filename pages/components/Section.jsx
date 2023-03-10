@@ -39,7 +39,7 @@ function Section({ section_name, rounded = false, play_button = true,hideShowAll
   ];
 
   return (
-    <div className="w-full h-[22rem] flex flex-col mt-4 px-8">
+    <div className="w-full h-[22rem] flex flex-col mt-4 lg:px-8 px-4">
       <header className="w-full mt-3 flex relative">
         <h1 className="text-2xl text-white">{section_name}</h1>
         {
@@ -49,10 +49,10 @@ function Section({ section_name, rounded = false, play_button = true,hideShowAll
         }
         
       </header>
-      <div className="s-full h-full py-4 flex ">
+      <div className="w-full h-full py-4 flex overflow-scroll">
         {Data.map((data) => {
           return (
-            <div key={data.title} className="w-[20%] music-card overflow-hidden h-full rounded-lg flex flex-col px-2 bg-[#181919] hover:bg-[#292928] transition-colors cursor-pointer mr-6 pt-2">
+            <div key={data.title} className="lg:w-[20%] min-w-[180px] music-card overflow-hidden h-full rounded-lg flex flex-col px-2 bg-[#181919] hover:bg-[#292928] transition-colors cursor-pointer mr-6 pt-2">
               <div className="w-full h-[70%]  rounded-lg p-1 relative">
                 <Image
                   className={`h-full ${rounded ? "rounded-full" : "rounded-lg"}`}

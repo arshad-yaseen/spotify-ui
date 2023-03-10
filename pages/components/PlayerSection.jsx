@@ -18,7 +18,7 @@ import Sound75Icon from "../../images/commonicons/sound75icon.svg";
 import Sound25Icon from "../../images/commonicons/sound25icon.svg";
 import MuteIcon from "../../images/commonicons/muteicon.svg";
 import FullScreenIcon from "../../images/commonicons/fullscreenicon.svg";
-import { getCurrentAudio, playPauseAction } from "../../lib/tools";
+import { playPauseAction } from "../../lib/tools";
 import progressAndSoundBarAction from "../../lib/progressAndSoundBarAction";
 
 function PlayerSection() {
@@ -38,13 +38,13 @@ function PlayerSection() {
   return (
     <div
       id="player_section"
-      className="h-24 z-[100] bg-[#181919] border-t border-t-[#292928] flex w-full fixed bottom-0 left-0"
+      className="h-24 z-[100] bg-[#181919] border-t border-t-[#292928] overflow-scroll flex  lg:w-full w-[850px] fixed bottom-0 left-0"
     >
       <div className="hidden">
         <audio id="player_audio" src="https://naathamd.com/wp-content/uploads/dlm_uploads/2020/05/The-Beauty-of-Existence.mp3?_=1"></audio>
       </div>
 
-      <div className="w-[30%] flex h-full px-6 py-4">
+      <div className="w-[30%] md:flex h-full px-6 py-4  hidden">
         <Image
           src={DummyMusicThumb}
           alt="Dummy music thumb"
@@ -166,7 +166,7 @@ function PlayerSection() {
           </div>
           <div
             id="seek_background"
-            className="w-[90%] h-full flex items-center px-2 relative seek"
+            className="sm:w-[90%] w-[70%] h-full flex items-center px-2 relative seek"
           >
             <div className="w-full h-[0.22rem] relative  bg-[#5F5C5D] rounded-full ">
               <div

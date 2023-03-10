@@ -10,7 +10,7 @@ function SideNav() {
   let router = useRouter()
 
   return (
-    <div className='bg-[#010001] z-50 w-[17%] h-full flex flex-col items-center' >
+    <div className='bg-[#010001] z-50 lg:w-[17%] min-w-[200px] hidden h-full sm:flex flex-col items-center' >
         <div className="h-24 w-full  flex items-center pl-6">
             <Image onClick={()=> router.push("/")}  src={SpotifyWhiteLogo} alt="Spotify White Logo" priority={true} height={40} className="cursor-pointer" />
         </div>

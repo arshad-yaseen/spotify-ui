@@ -14,7 +14,7 @@ function HomeSection() {
   return (
     <div
       id="home_section"
-      className="bg-[#121313] w-[83%] pb-56 h-screen overflow-scroll flex flex-col items-center "
+      className="bg-[#121313] sm:w-[83%] w-full pb-56 h-screen overflow-scroll flex flex-col items-center "
     >
       
       {router.pathname === "/search" ? (
@@ -32,7 +32,7 @@ function HomeSection() {
           <Hero />
           <Section section_name="Episodes for you" />
           <Section
-            section_name="Recommended for today"
+            section_name="Recommended"
             rounded
             play_button={false}
           />
